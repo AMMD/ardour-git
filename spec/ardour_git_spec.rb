@@ -1,4 +1,4 @@
-require_relative '../lib/ardourgit'
+require_relative '../lib/ardour_git'
 
 describe ArdourGit do
   after(:each) do
