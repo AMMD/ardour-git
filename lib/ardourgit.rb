@@ -1,5 +1,9 @@
+require 'git'
+
 class ArdourGit
   def create
-    FileUtils.touch('.ardourgit')
+    g = Git.init('.',
+                 { :repository => '.ardourgit',
+                   :index => '.ardourgit/index'})
   end
 end
