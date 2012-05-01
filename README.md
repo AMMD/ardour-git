@@ -7,7 +7,7 @@ This project is part of the Audio-git project which aims to enable people to fre
 REQUIREMENTS
 ------------
 
-* Ruby 1.9.2
+* Ruby 1.9
 
 USAGE
 -----
