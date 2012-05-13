@@ -1,22 +1,26 @@
 require_relative '../lib/ardour_files'
+require_relative '../lib/session_parser'
+
+class SessionFinder; end
 
 describe ArdourFiles do
-  before(:each) do
-    FileUtils.mkdir('tmp')
-    Dir.chdir('tmp')
+  it 'returns an empty list when no session files exist' do
+    session_files = []
+    SessionFinder.stub(:list).and_return(session_files)
+    ArdourFiles.list.should == session_files
   end
-
-  after(:each) do
-    Dir.chdir('..')
-    FileUtils.rm_rf('tmp')
-  end
-
-  it 'returns an empty file list when no files exist'
 
   it 'returns the ardour session file when it exists' do
-    FileUtils.touch('session.ardour')
-    ArdourFiles.list.should == ['session.ardour']
+    session_files = ['session.ardour']
+    SessionFinder.stub(:list).and_return(session_files)
+    ArdourFiles.list.should == session_files
   end
 
-  it 'parses the ardour session file to return all project files'
+  it 'parses the ardour session file to return all project files' do
+    session_files = ['session.ardour']
+    audio_files = ['something.wav', 'other.wav']
+    SessionFinder.stub(:list).and_return(session_files)
+    SessionParser.stub(:list_audio_files).and_return(audio_files)
+    ArdourFiles.list.should == ['session.ardour', 'something.wav', 'other.wav']
+  end
 end
