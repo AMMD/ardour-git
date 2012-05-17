@@ -6,4 +6,11 @@ class GitRepository
              { :repository => '.ardourgit',
                :index => '.ardourgit/index'})
   end
+
+  def self.add(files)
+    g = Git.open('.',
+             { :repository => '.ardourgit',
+               :index => '.ardourgit/index'})
+    g.add(files)
+  end
 end
