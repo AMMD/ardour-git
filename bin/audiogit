@@ -8,7 +8,8 @@ class App
   include Methadone::Main
   include Methadone::CLILogging
 
-  main do
+  main do |keyword|
+    exit_now! 'keyword required' if keyword.nil?
     ArdourGitCli.new.command(keyword.dup)
   end
 
