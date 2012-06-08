@@ -3,6 +3,8 @@ GEM
   specs:
     diff-lcs (1.1.3)
     git (1.2.5)
+    methadone (1.2.0)
+      bundler
     rspec (2.9.0)
       rspec-core (~> 2.9.0)
       rspec-expectations (~> 2.9.0)
@@ -17,4 +19,5 @@ PLATFORMS
 
 DEPENDENCIES
   git
+  methadone
   rspec
