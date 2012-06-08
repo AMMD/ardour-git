@@ -1,5 +1,5 @@
-require_relative 'session_parser'
-require_relative 'session_finder'
+require 'session_parser'
+require 'session_finder'
 
 class ArdourFiles
   def self.list
