@@ -17,5 +17,7 @@ class App
 
   on('-i', '--init', 'Initialize a new repository for current ardour project')
 
+  version '1.0'
+
   go!
 end
