@@ -1,18 +1,14 @@
 require 'git'
+require 'ardour_files'
+require 'git_repository'
 
 class ArdourGit
   def create
-    @g = Git.init('.',
-                 { :repository => '.ardourgit',
-                   :index => '.ardourgit/index'})
+    GitRepository.create
   end
 
   def save
-    files = Dir.glob('*.ardour')
-    @g.add files
-  end
-
-  def list
-    @g.ls_files.keys
+    files = ArdourFiles.list
+    GitRepository.add files
   end
 end

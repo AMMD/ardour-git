@@ -1,6 +1,8 @@
 require_relative '../lib/ardour_git'
 
 describe ArdourGit do
+  let(:ardourgit) { ArdourGit.new }
+
   before(:each) do
     FileUtils.mkdir('tmp')
     Dir.chdir('tmp')
@@ -12,23 +14,15 @@ describe ArdourGit do
   end
 
   it 'creates a git repository when create command is called' do
-    ArdourGit.new.create
-    (FileTest.exist? '.ardourgit').should == true
+    GitRepository.should_receive(:create)
+    ardourgit.create
   end
 
-  it 'adds session file when save command is called' do
-    repository = ArdourGit.new
-    repository.create
-    FileUtils.touch 'something.ardour'
-    repository.save
-    repository.list.should == ['something.ardour']
-  end
-
-  it 'does not add file which is not an ardour session' do
-    repository = ArdourGit.new
-    repository.create
-    FileUtils.touch 'something.txt'
-    repository.save
-    repository.list.should == []
+  it 'adds all project files when save command is called' do
+    ardourgit.create
+    files = ['something.session', 'thing.wav']
+    ArdourFiles.should_receive(:list).and_return(files)
+    GitRepository.should_receive(:add).with(files)
+    ardourgit.save
   end
 end
