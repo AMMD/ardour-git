@@ -1,4 +1,3 @@
-require 'git'
 require 'ardour_files'
 require 'git_repository'
 
