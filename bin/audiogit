@@ -2,12 +2,14 @@
 
 require 'optparse'
 require 'methadone'
+require_relative '../lib/ardour_git_cli'
 
 class App
   include Methadone::Main
   include Methadone::CLILogging
 
   main do
+    ArdourGitCli.new.command(keyword.dup)
   end
 
   description 'Version an Ardour project with git'
