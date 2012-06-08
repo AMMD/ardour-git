@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+require 'methadone'
+
+class App
+  include Methadone::Main
+  include Methadone::CLILogging
+
+  main do
+  end
+
+  description 'Version an Ardour project with git'
+
+  go!
+end
