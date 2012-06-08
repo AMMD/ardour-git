@@ -12,5 +12,7 @@ class App
 
   description 'Version an Ardour project with git'
 
+  on('-i', '--init', 'Initialize a new repository for current ardour project')
+
   go!
 end
