@@ -1,5 +1,5 @@
-require 'ardour_files'
-require 'git_repository'
+require_relative 'ardour_files'
+require_relative 'git_repository'
 
 class ArdourGit
   def create
