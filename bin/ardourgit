@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+require 'trollop'
+require_relative '../lib/ardour_git_cli'
+
+opts = Trollop::options do
+  opt :init, 'Initialize a new repository for current Ardour project'
+end
+
+ArdourGitCli.command(opts)

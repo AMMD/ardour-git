@@ -1,8 +1,8 @@
 require_relative 'ardour_git'
 
 class ArdourGitCli
-  def command(keyword)
-    if keyword == 'init'
+  def self.command(opts)
+    if opts[:init]
       ArdourGit.new.create
     end
   end
