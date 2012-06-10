@@ -21,7 +21,7 @@ describe GitRepository do
     (FileTest.exists? '.git').should == true
   end
 
-  it 'add files to repository' do
+  it 'adds files to repository' do
     files = ['a', 'b']
     g = stub
     Git.should_receive(:open).and_return(g)
