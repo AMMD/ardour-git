@@ -2,15 +2,11 @@ require 'git'
 
 class GitRepository
   def self.create
-    Git.init('.',
-             { :repository => '.ardourgit',
-               :index => '.ardourgit/index'})
+    Git.init
   end
 
   def self.add(files)
-    g = Git.open('.',
-             { :repository => '.ardourgit',
-               :index => '.ardourgit/index'})
+    g = Git.open
     g.add(files)
   end
 end

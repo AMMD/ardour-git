@@ -18,14 +18,13 @@ describe GitRepository do
 
   it 'creates the repository in .ardourgit folder' do
     GitRepository.create
-    (FileTest.exists? '.ardourgit').should == true
-    #(FileTest.exists? '.ardourgit/index').should == true
+    (FileTest.exists? '.git').should == true
   end
 
   it 'add files to repository' do
     files = ['a', 'b']
     g = stub
-    Git.should_receive(:open).with('.', {:repository => '.ardourgit', :index => '.ardourgit/index'}).and_return(g)
+    Git.should_receive(:open).and_return(g)
     g.should_receive(:add).with(files)
     GitRepository.add(files)
   end
