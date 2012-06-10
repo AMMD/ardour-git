@@ -11,14 +11,16 @@ describe GitRepository do
     FileUtils.rm_rf('tmp')
   end
 
-  it 'calls git init when create is called' do
-    Git.should_receive(:init)
-    GitRepository.create
-  end
+  context 'When calling create' do
+    it 'calls git init' do
+      Git.should_receive(:init)
+      GitRepository.create
+    end
 
-  it 'creates the repository in .ardourgit folder' do
-    GitRepository.create
-    (FileTest.exists? '.git').should == true
+    it 'creates the repository in .git folder' do
+      GitRepository.create
+      (FileTest.exists? '.git').should == true
+    end
   end
 
   it 'adds files to repository' do
