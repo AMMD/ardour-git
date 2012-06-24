@@ -5,6 +5,7 @@ require_relative '../lib/ardour_git_cli'
 
 opts = Trollop::options do
   opt :init, 'Initialize a new repository for current Ardour project'
+  opt :save, 'Save the current session'
 end
 
 ArdourGitCli.command(opts)
