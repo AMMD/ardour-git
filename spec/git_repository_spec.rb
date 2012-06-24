@@ -1,4 +1,4 @@
-require_relative '../lib/git_repository'
+require_relative '../lib/ardour_git/git_repository'
 
 describe GitRepository do
   before(:each) do
