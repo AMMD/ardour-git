@@ -6,5 +6,8 @@ Gem::Specification.new do |s|
   s.description = 'Version Ardour projects with git'
   s.authors = ['Merouane Atig']
   s.email = 'merouane.atig@gmail.com'
+
   s.files = Dir['{lib}/**/*.rb', 'bin/*', "*.md"]
+  s.executables = 'ardour_git'
+  s.require_paths = ['lib']
 end
