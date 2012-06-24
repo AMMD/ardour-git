@@ -1,5 +1,5 @@
-require 'ardour_git/ardour_files'
-require 'ardour_git/git_repository'
+require_relative 'ardour_git/ardour_files'
+require_relative 'ardour_git/git_repository'
 
 class ArdourGit
   def command(opts)
