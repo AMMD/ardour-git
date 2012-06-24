@@ -6,7 +6,7 @@ class GitRepository
   end
 
   def self.add(files)
-    g = Git.open
+    g = Git.open('.')
     g.add(files)
   end
 end
