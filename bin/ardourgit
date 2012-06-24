@@ -8,4 +8,4 @@ opts = Trollop::options do
   opt :save, 'Save the current session'
 end
 
-ArdourGitCli.command(opts)
+ArdourGit.new.command(opts)
