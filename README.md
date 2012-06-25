@@ -1,4 +1,4 @@
-ardour-git-cli
+ardour-git
 ==============
 
 ardour-git is a plugin for ardour to commit and push automatically to a git repository.
