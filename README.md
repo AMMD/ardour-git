@@ -9,11 +9,16 @@ REQUIREMENTS
 
 * Ruby 1.9
 
+INSTALLATION
+------------
+
+* gem install ardour_git
+
 USAGE
 -----
 
-* ardour-git --create name_of_project : create a new project
-* ardour-git --save : save current ardour session and files
+* ardour-git --init : initialize an Ardour session directory
+* ardour-git --save : save current ardour session and related files
 * ardour-git --clone project_url  : clone an existing project
 * ardour-git --watch : watch session for changes
 * ardour-git --publish name_of_version : publish a version
