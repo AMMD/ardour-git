@@ -9,4 +9,9 @@ class GitRepository
     g = Git.open('.')
     g.add(files)
   end
+
+  def self.commit(message)
+    g = Git.open('.')
+    g.commit_all(message)
+  end
 end

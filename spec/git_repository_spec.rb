@@ -30,4 +30,11 @@ describe GitRepository do
     g.should_receive(:add).with(files)
     GitRepository.add(files)
   end
+
+  it 'commits files to repository' do
+    g = stub
+    Git.should_receive(:open).with('.').and_return(g)
+    g.should_receive(:commit_all).with('message')
+    GitRepository.commit('message')
+  end
 end
