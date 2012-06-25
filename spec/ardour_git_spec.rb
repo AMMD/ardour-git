@@ -18,11 +18,12 @@ describe ArdourGit do
     ardourgit.create
   end
 
-  it 'adds all project files when save command is called' do
+  it 'adds and commits all project files when save command is called' do
     ardourgit.create
     files = ['something.session', 'thing.wav']
     ArdourFiles.should_receive(:list).and_return(files)
     GitRepository.should_receive(:add).with(files)
+    GitRepository.should_receive(:commit).with('test')
     ardourgit.save
   end
 end

@@ -16,6 +16,7 @@ class ArdourGit
 
   def save
     files = ArdourFiles.list
-    GitRepository.add files
+    GitRepository.add(files)
+    GitRepository.commit('test')
   end
 end
