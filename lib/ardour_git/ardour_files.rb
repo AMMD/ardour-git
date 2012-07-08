@@ -3,12 +3,13 @@ require_relative 'session_finder'
 
 class ArdourFiles
   def self.list
-    files = []
-    session_files = SessionFinder.list
-    files.concat(session_files)
-    session_files.each do |session|
-      files.concat(SessionParser.list_audio_files(session))
+    begin
+      session_file = SessionFinder.file
+      files = [session_file]
+      audio_files = SessionParser.list_audio_files(session_file)
+      files.concat(audio_files)
+    rescue SessionFinder::NoSessionFound
+      []
     end
-    files
   end
 end

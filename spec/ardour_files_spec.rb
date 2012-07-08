@@ -1,23 +1,28 @@
 require_relative '../lib/ardour_git/ardour_files'
 
 describe ArdourFiles do
-  it 'returns an empty list when no session files exist' do
-    session_files = []
-    SessionFinder.stub(:list).and_return(session_files)
-    ArdourFiles.list.should == session_files
+  describe "when there is no session file" do
+    it "returns an empty list" do
+      SessionFinder.should_receive(:file).and_raise(SessionFinder::NoSessionFound.new)
+      ArdourFiles.list.should == []
+    end
   end
 
-  it 'returns the ardour session file when it exists' do
-    session_files = ['session.ardour']
-    SessionFinder.stub(:list).and_return(session_files)
-    ArdourFiles.list.should == session_files
+  describe "when there is one session file without any audio file" do
+    it "returns the ardour session file" do
+      session_file = 'session.ardour'
+      SessionFinder.should_receive(:file).and_return(session_file)
+      ArdourFiles.list.should == [session_file]
+    end
   end
 
-  it 'parses the ardour session file to return all project files' do
-    session_files = ['session.ardour']
-    audio_files = ['something.wav', 'other.wav']
-    SessionFinder.stub(:list).and_return(session_files)
-    SessionParser.stub(:list_audio_files).and_return(audio_files)
+  describe "when there is one session file and related audio files" do
+    it "returns the ardour session and the audio files" do
+      session_file = 'session.ardour'
+      audio_files = ['something.wav', 'other.wav']
+      SessionFinder.should_receive(:file).and_return(session_file)
+      SessionParser.should_receive(:list_audio_files).and_return(audio_files)
     ArdourFiles.list.should == ['session.ardour', 'something.wav', 'other.wav']
+    end
   end
 end
