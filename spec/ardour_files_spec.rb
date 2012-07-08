@@ -1,7 +1,4 @@
 require_relative '../lib/ardour_git/ardour_files'
-require_relative '../lib/ardour_git/session_parser'
-
-class SessionFinder; end
 
 describe ArdourFiles do
   it 'returns an empty list when no session files exist' do
