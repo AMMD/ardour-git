@@ -17,12 +17,15 @@ INSTALLATION
 USAGE
 -----
 
-* ardour-git --init : initialize an Ardour session directory
-* ardour-git --save : save current ardour session and related files
-* ardour-git --clone project_url  : clone an existing project
-* ardour-git --watch : watch session for changes
-* ardour-git --publish name_of_version : publish a version
-* ardour-git --show : show published versions
+* ardour_git --init : initialize an Ardour session directory
+* ardour_git --save "log message": save current ardour session and related files with a log message
+
+Commands to be implemented:
+* ardour_git --version version_name  : create a version of current session (git branch)
+* ardour_git --clone project_url  : clone an existing project
+* ardour_git --watch : watch session for changes
+* ardour_git --publish name_of_version : publish a version
+* ardour_git --show : show published versions
 
 TODO
 ----
