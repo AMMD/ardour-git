@@ -1,12 +1,12 @@
 Gem::Specification.new do |s|
   s.name = 'ardour_git'
-  s.version = '0.2'
+  s.version = '0.1'
 
   s.authors = ['Merouane Atig']
   s.email = 'merouane.atig@gmail.com'
   s.homepage = %q{https://github.com/AMMD/ardour-git}
   s.summary = 'Ardour git'
-  s.description = 'Version Ardour projects with git'
+  s.description = 'Put Ardour projects under version control with git'
 
   s.files = Dir['{lib}/**/*.rb', 'bin/*', "*.md"]
   s.executables = 'ardour_git'
