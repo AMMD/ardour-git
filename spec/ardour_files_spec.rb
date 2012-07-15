@@ -9,20 +9,20 @@ describe ArdourFiles do
   end
 
   describe "when there is one session file without any audio file" do
-    it "returns the ardour session and instant.xml files" do
+    it "returns the ardour session, instant.xml and .history files" do
       session_file = 'session.ardour'
       SessionFinder.should_receive(:file).and_return(session_file)
-      ArdourFiles.list.should == [session_file, 'instant.xml']
+      ArdourFiles.list.should == [session_file, 'instant.xml', '.history']
     end
   end
 
   describe "when there is one session file and related audio files" do
-    it "returns the ardour session, intant.xml and the audio files" do
+    it "returns the ardour session, the audio files, instant.xml and .history files" do
       session_file = 'session.ardour'
       audio_files = ['something.wav', 'other.wav']
       SessionFinder.should_receive(:file).and_return(session_file)
       SessionParser.should_receive(:list_audio_files).and_return(audio_files)
-    ArdourFiles.list.should == ['session.ardour', 'something.wav', 'other.wav', 'instant.xml']
+    ArdourFiles.list.should == ['session.ardour', 'something.wav', 'other.wav', 'instant.xml', '.history']
     end
   end
 end

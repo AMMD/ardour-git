@@ -8,7 +8,7 @@ class ArdourFiles
       files = [session_file]
       audio_files = SessionParser.list_audio_files(session_file)
       files += audio_files
-      files += ['instant.xml']
+      files += ['instant.xml', '.history']
     rescue SessionFinder::NoSessionFound
       []
     end
