@@ -14,8 +14,8 @@ describe ArdourGit do
   end
 
   it 'creates a git repository when create command is called' do
-    GitRepository.should_receive(:create)
     ardourgit.create
+    Dir.exists?(".git").should == true
   end
 
   it 'adds and commits all project files when save command is called' do
