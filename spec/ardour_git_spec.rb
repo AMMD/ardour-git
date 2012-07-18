@@ -20,10 +20,10 @@ describe ArdourGit do
 
   it 'adds and commits all project files when save command is called' do
     ardourgit.create
-    files = ['something.session', 'thing.wav']
+    files = ['something.session', 'thing.wav', '.history', 'instant.xml']
     ArdourFiles.should_receive(:list).and_return(files)
     GitRepository.should_receive(:add).with(files)
-    GitRepository.should_receive(:commit).with('test')
-    ardourgit.save
+    GitRepository.should_receive(:commit).with('my message')
+    ardourgit.save "my message"
   end
 end
