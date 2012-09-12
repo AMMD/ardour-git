@@ -3,6 +3,7 @@ require 'git'
 class GitRepository
   def self.create
     Git.init
+    `git annex init`
   end
 
   def self.add(files)

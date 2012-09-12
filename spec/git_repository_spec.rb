@@ -11,7 +11,7 @@ describe GitRepository do
     FileUtils.rm_rf('tmp')
   end
 
-  context 'When calling create' do
+  describe 'When calling create' do
     it 'calls git init' do
       Git.should_receive(:init)
       GitRepository.create
@@ -19,7 +19,12 @@ describe GitRepository do
 
     it 'creates the repository in .git folder' do
       GitRepository.create
-      (FileTest.exists? '.git').should == true
+      (FileTest.exists? '.git').should be_true
+    end
+
+    it 'initializes git annex' do
+      GitRepository.create
+      (FileTest.exists? '.git/annex').should be_true
     end
   end
 

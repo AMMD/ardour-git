@@ -8,6 +8,7 @@ REQUIREMENTS
 ------------
 
 * Ruby 1.9
+* git-annex
 
 INSTALLATION
 ------------
