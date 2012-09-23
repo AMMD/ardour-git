@@ -11,6 +11,11 @@ class GitRepository
     g.add(files)
   end
 
+  def self.add_big(files)
+    files = files * " "
+    `git annex add #{files}`
+  end
+
   def self.commit(message)
     g = Git.open('.')
     g.commit_all(message)

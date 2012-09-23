@@ -1,14 +1,16 @@
 require_relative '../lib/ardour_git/git_repository'
 
 describe GitRepository do
+  tmp = 'tmp'
   before(:each) do
-    FileUtils.mkdir('tmp')
-    Dir.chdir('tmp')
+    FileUtils.mkdir(tmp)
+    Dir.chdir(tmp)
   end
 
   after(:each) do
+    `git annex drop * --force`
     Dir.chdir('..')
-    FileUtils.rm_rf('tmp')
+    FileUtils.rm_rf(tmp)
   end
 
   describe 'When calling create' do
@@ -28,12 +30,24 @@ describe GitRepository do
     end
   end
 
-  it 'adds files to repository' do
-    files = ['a', 'b']
-    g = stub
-    Git.should_receive(:open).with('.').and_return(g)
-    g.should_receive(:add).with(files)
-    GitRepository.add(files)
+  describe 'When calling add_big' do
+    it 'adds files to git annex' do
+      files = ['a', 'b']
+      FileUtils.touch files
+      GitRepository.create
+      GitRepository.add_big(files)
+      # TODO: what is the expectation?
+    end
+  end
+
+  describe 'When calling add' do
+    it 'adds files to repository' do
+      files = ['a', 'b']
+      g = stub
+      Git.should_receive(:open).with('.').and_return(g)
+      g.should_receive(:add).with(files)
+      GitRepository.add(files)
+    end
   end
 
   it 'commits files to repository with a message' do
