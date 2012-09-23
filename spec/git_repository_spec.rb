@@ -1,16 +1,9 @@
+require_relative "spec_helper"
 require_relative '../lib/ardour_git/git_repository'
 
 describe GitRepository do
-  tmp = 'tmp'
-  before(:each) do
-    FileUtils.mkdir(tmp)
-    Dir.chdir(tmp)
-  end
-
   after(:each) do
     `git annex drop * --force`
-    Dir.chdir('..')
-    FileUtils.rm_rf(tmp)
   end
 
   describe 'When calling create' do
