@@ -21,7 +21,9 @@ class ArdourGit
 
   def save(message)
     files = ArdourFiles.list
+    audio_files = ArdourFiles.list_audio
     GitRepository.add(files)
+    GitRepository.add_big(audio_files)
     GitRepository.commit(message)
   end
 end

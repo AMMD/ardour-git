@@ -18,12 +18,38 @@ describe ArdourGit do
     Dir.exists?(".git").should == true
   end
 
-  it 'adds and commits all project files when save command is called' do
-    ardourgit.create
-    files = ['something.session', 'thing.wav', '.history', 'instant.xml']
-    ArdourFiles.should_receive(:list).and_return(files)
-    GitRepository.should_receive(:add).with(files)
-    GitRepository.should_receive(:commit).with('my message')
-    ardourgit.save "my message"
+  context 'when save command is called' do
+    it 'adds audio files to git annex' do
+      ardourgit.create
+      files = [stub]
+      audio_files = ['thing.wav', 'other.wav', 'that.wav']
+      ArdourFiles.stub(:list).and_return(files)
+      ArdourFiles.should_receive(:list_audio).and_return(audio_files)
+      GitRepository.stub(:add)
+      GitRepository.stub(:commit)
+      GitRepository.should_receive(:add_big).with(audio_files)
+      ardourgit.save "my message"
+    end
+
+    it 'adds other files to git' do
+      ardourgit.create
+      files = ['.history', 'instant.xml', 'project.ardour']
+      audio_files = [stub]
+      ArdourFiles.stub(:list_audio).and_return(audio_files)
+      ArdourFiles.should_receive(:list).and_return(files)
+      GitRepository.stub(:add_big)
+      GitRepository.stub(:commit)
+      GitRepository.should_receive(:add).with(files)
+      ardourgit.save "my message"
+    end
+
+    it 'commits with message' do
+      ArdourFiles.stub(:list)
+      ArdourFiles.stub(:list_audio)
+      GitRepository.stub(:add)
+      GitRepository.stub(:add_big)
+      GitRepository.should_receive(:commit).with('my message')
+      ardourgit.save "my message"
+    end
   end
 end
