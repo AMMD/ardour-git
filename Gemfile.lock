@@ -2,14 +2,15 @@ PATH
   remote: .
   specs:
     ardour_git (0.1)
-      git
-      trollop
+      git (= 1.2.5)
+      gli (= 2.2.1)
 
 GEM
   remote: http://rubygems.org/
   specs:
     diff-lcs (1.1.3)
     git (1.2.5)
+    gli (2.2.1)
     rspec (2.9.0)
       rspec-core (~> 2.9.0)
       rspec-expectations (~> 2.9.0)
@@ -18,7 +19,6 @@ GEM
     rspec-expectations (2.9.1)
       diff-lcs (~> 1.1.3)
     rspec-mocks (2.9.0)
-    trollop (2.0)
 
 PLATFORMS
   ruby

@@ -1,11 +1,33 @@
 #!/usr/bin/env ruby
-
-require 'trollop'
-require_relative '../lib/ardour_git'
-
-opts = Trollop::options do
-  opt :init, 'Initialize a new repository for current Ardour project'
-  opt :save, 'Save the current session'
+require 'gli'
+begin # XXX: Remove this begin/rescue before distributing your app
+require 'ardour_git'
+rescue LoadError
+  STDERR.puts "In development, you need to use `bundle exec bin/ardour_git` to run your app"
+  STDERR.puts "At install-time, RubyGems will make sure lib, etc. are in the load path"
+  STDERR.puts "Feel free to remove this message from bin/ardour_git now"
+  exit 64
 end
 
-ArdourGit.new.command(opts, ARGV)
+include GLI::App
+
+program_desc 'Put your Ardour project under version control'
+
+desc 'Initialize current directory for version control'
+arg_name 'Describe arguments to init here'
+command :init do |c|
+  c.action do |global_options,options,args|
+    puts "Initializing current folder for Argit"
+    ArdourGit.new.create
+  end
+end
+
+desc 'Save the current files for your Ardour project'
+arg_name 'Describe arguments to save here'
+command :save do |c|
+  c.action do |global_options,options,args|
+    ArdourGit.new.save args[0]
+  end
+end
+
+exit run(ARGV)
