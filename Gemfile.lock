@@ -1,3 +1,10 @@
+PATH
+  remote: .
+  specs:
+    ardour_git (0.1)
+      git
+      trollop
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -11,12 +18,11 @@ GEM
     rspec-expectations (2.9.1)
       diff-lcs (~> 1.1.3)
     rspec-mocks (2.9.0)
-    trollop (1.16.2)
+    trollop (2.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  git
+  ardour_git!
   rspec
-  trollop

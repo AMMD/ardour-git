@@ -11,4 +11,7 @@ Gem::Specification.new do |s|
   s.files = Dir['{lib}/**/*.rb', 'bin/*', "*.md"]
   s.executables = 'ardour_git'
   s.require_paths = ['lib']
+  s.add_development_dependency('rspec')
+  s.add_runtime_dependency('trollop')
+  s.add_runtime_dependency('git')
 end
