@@ -18,7 +18,7 @@ arg_name 'Describe arguments to init here'
 command :init do |c|
   c.action do |global_options,options,args|
     puts "Initializing current folder for Argit"
-    ArdourGit.new.create
+    ArdourGit::Commands::Init.run
   end
 end
 
