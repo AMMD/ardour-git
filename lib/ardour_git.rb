@@ -1,5 +1,6 @@
 require_relative 'ardour_git/ardour_files'
 require_relative 'ardour_git/git_repository'
+require_relative 'ardour_git/commands/init'
 require_relative 'ardour_git/version'
 
 #class ArdourGit
