@@ -26,7 +26,8 @@ desc 'Save the current files for your Ardour project'
 arg_name 'Describe arguments to save here'
 command :save do |c|
   c.action do |global_options,options,args|
-    ArdourGit.new.save args[0]
+    puts "Saving current project"
+    ArdourGit::Commands::Save.run args[0]
   end
 end
 
