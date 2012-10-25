@@ -13,13 +13,13 @@ describe ArdourGit do
     FileUtils.rm_rf('tmp')
   end
 
-  it 'creates a git repository when create command is called' do
+  xit 'creates a git repository when create command is called' do
     ardourgit.create
     Dir.exists?(".git").should == true
   end
 
   context 'when save command is called' do
-    it 'adds audio files to git annex' do
+    xit 'adds audio files to git annex' do
       ardourgit.create
       files = [stub]
       audio_files = ['thing.wav', 'other.wav', 'that.wav']
@@ -31,7 +31,7 @@ describe ArdourGit do
       ardourgit.save "my message"
     end
 
-    it 'adds other files to git' do
+    xit 'adds other files to git' do
       ardourgit.create
       files = ['.history', 'instant.xml', 'project.ardour']
       audio_files = [stub]
@@ -43,7 +43,7 @@ describe ArdourGit do
       ardourgit.save "my message"
     end
 
-    it 'commits with message' do
+    xit 'commits with message' do
       ArdourFiles.stub(:list)
       ArdourFiles.stub(:list_audio)
       GitRepository.stub(:add)

@@ -1,6 +1,7 @@
+require File.join([File.dirname(__FILE__),'lib','ardour_git','version.rb'])
 Gem::Specification.new do |s|
   s.name = 'ardour_git'
-  s.version = '0.1'
+  s.version = ArdourGit::VERSION
 
   s.authors = ['Merouane Atig']
   s.email = 'merouane.atig@gmail.com'
