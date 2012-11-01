@@ -14,7 +14,13 @@ class ArdourFiles
   def self.list_audio
     begin
       session_file = SessionFinder.file
-      audio_files = SessionParser.list_audio_files(session_file)
+      session_name = File.basename(session_file, '.ardour')
+      files = SessionParser.list_audio_files(session_file)
+      audio_files = []
+      files.each do |file|
+        audio_files << File.join('interchange', session_name, 'audiofiles', file)
+      end
+      audio_files
     rescue SessionFinder::NoSessionFound
       []
     end

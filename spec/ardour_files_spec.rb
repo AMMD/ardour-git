@@ -17,20 +17,22 @@ describe ArdourFiles do
   end
 
   context "when there is one session file and related audio files" do
-    let(:session_file) { 'session.ardour' }
+    let(:session_file) { 'mySession.ardour' }
     let(:audio_files) { ['something.wav', 'other.wav'] }
 
     before do
-      SessionFinder.should_receive(:file).and_return(session_file)
+      SessionFinder.stub(:file).and_return(session_file)
     end
 
     it ".list returns the ardour session, instant.xml and .history files" do
-      ArdourFiles.list.should == ['session.ardour', 'instant.xml', '.history']
+      ArdourFiles.list.should == ['mySession.ardour', 'instant.xml', '.history']
     end
 
     it ".list_audio returns the audio files" do
-      SessionParser.should_receive(:list_audio_files).and_return(audio_files)
-      ArdourFiles.list_audio.should == audio_files
+      SessionParser.stub(:list_audio_files).and_return(audio_files)
+      ArdourFiles.list_audio.should == ['interchange/mySession/audiofiles/something.wav',
+                                        'interchange/mySession/audiofiles/other.wav']
+
     end
   end
 end
