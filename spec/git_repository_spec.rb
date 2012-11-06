@@ -7,11 +7,6 @@ describe GitRepository do
   end
 
   describe 'When calling create' do
-    it 'calls git init' do
-      Git.should_receive(:init)
-      GitRepository.create
-    end
-
     it 'creates the repository in .git folder' do
       GitRepository.create
       (FileTest.exists? '.git').should be_true

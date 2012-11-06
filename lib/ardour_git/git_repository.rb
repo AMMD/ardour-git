@@ -2,7 +2,7 @@ require 'git'
 
 class GitRepository
   def self.create
-    Git.init
+    `git init`
     `git annex init`
   end
 
