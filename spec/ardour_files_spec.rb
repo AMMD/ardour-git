@@ -1,4 +1,4 @@
-require_relative '../lib/ardour_git/ardour_files'
+require_relative '../lib/ardour_git'
 
 describe ArdourFiles do
   describe "when there is no session file" do

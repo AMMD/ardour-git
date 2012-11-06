@@ -1,4 +1,4 @@
-require_relative '../lib/ardour_git/session_parser'
+require_relative '../lib/ardour_git'
 
 describe SessionParser do
   it 'gets the list of the session audio files' do

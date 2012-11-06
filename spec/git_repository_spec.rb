@@ -1,5 +1,5 @@
 require_relative "spec_helper"
-require_relative '../lib/ardour_git/git_repository'
+require_relative '../lib/ardour_git'
 
 describe GitRepository do
   after(:each) do

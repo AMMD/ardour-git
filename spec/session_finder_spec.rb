@@ -1,4 +1,4 @@
-require_relative '../lib/ardour_git/session_finder'
+require_relative '../lib/ardour_git'
 
 describe SessionFinder do
   before(:each) do
