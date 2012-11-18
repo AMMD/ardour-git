@@ -15,5 +15,4 @@ Gem::Specification.new do |s|
   s.bindir = 'bin'
   s.add_development_dependency('rspec')
   s.add_runtime_dependency('gli', '2.2.1')
-  s.add_runtime_dependency('git', '1.2.5')
 end
