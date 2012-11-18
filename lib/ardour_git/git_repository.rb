@@ -17,7 +17,6 @@ class GitRepository
   end
 
   def self.commit(message)
-    g = Git.open('.')
-    g.commit_all(message)
+    `git commit -am "#{message}"`
   end
 end
