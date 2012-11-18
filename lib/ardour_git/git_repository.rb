@@ -1,5 +1,3 @@
-require 'git'
-
 class GitRepository
   def self.create
     `git init`
@@ -7,8 +5,8 @@ class GitRepository
   end
 
   def self.add(files)
-    g = Git.open('.')
-    g.add(files)
+    files = files * " "
+    `git add #{files}`
   end
 
   def self.add_big(files)

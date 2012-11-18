@@ -24,24 +24,26 @@ describe GitRepository do
       FileUtils.touch files
       GitRepository.create
       GitRepository.add_big(files)
-      # TODO: what is the expectation?
+      `git annex find`.should include('a', 'b')
     end
   end
 
   describe 'When calling add' do
     it 'adds files to repository' do
       files = ['a', 'b']
-      g = stub
-      Git.should_receive(:open).with('.').and_return(g)
-      g.should_receive(:add).with(files)
+      FileUtils.touch files
+      GitRepository.create
       GitRepository.add(files)
+      `git ls-files`.should include('a', 'b')
     end
   end
 
   it 'commits files to repository with a message' do
-    g = stub
-    Git.should_receive(:open).with('.').and_return(g)
-    g.should_receive(:commit_all).with('message')
+    files = ['a', 'b']
+    FileUtils.touch files
+    GitRepository.create
+    GitRepository.add(files)
     GitRepository.commit('message')
+    `git show --pretty="format:" --name-only`.should include('a', 'b')
   end
 end
